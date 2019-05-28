@@ -40,6 +40,35 @@ export class UsuarioService {
     });
   }
 
+  getUserData(): Observable<any> {
+    return Observable.create(observer => {
+      this.firebase.auth().onAuthStateChanged(async user => {
+        if (user) {
+          await this.firebase.db().collection('users').doc(user.uid)
+            .onSnapshot(result => {
+              this.usuario = {
+                id: user.uid,
+                email: user.email,
+                nome: result.data().nome,
+                telefone: result.data().telefone,
+                atletica: result.data().atletica,
+                isOnline: true
+              };
+
+              observer.next(this.usuario);
+            });
+        } else {
+          this.usuario = {
+            id: null,
+            email: null,
+            isOnline: false };
+
+          observer.next(this.usuario);
+        }
+      });
+    });
+  }
+
   async login(email, senha) {
     try {
       await this.firebase.auth().signInWithEmailAndPassword(email, senha);

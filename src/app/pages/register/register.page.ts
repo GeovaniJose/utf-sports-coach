@@ -36,7 +36,6 @@ export class RegisterPage implements OnInit {
       await this.usuario.registrar(this.email, this.senha);
       this.gravarUsuario();
       this.showLoading = false;
-      this.router.navigateByUrl('/login');
     } catch (erro) {
       this.showLoading = false;
     }
@@ -48,7 +47,7 @@ export class RegisterPage implements OnInit {
         nome: this.nome,
         telefone: this.telefone,
         atletica: this.atletica,
-        tipo: 'player'
+        tipo: 'coach'
       });
     } catch (erro) {
       console.log(erro);
