@@ -18,7 +18,7 @@ export class LoginPage implements OnInit {
   constructor(public usuario: UsuarioService, public router: Router) {
     this.usuario.getUser().subscribe(user => {
       (user.isOnline)
-        ? this.router.navigateByUrl('/home')
+        ? this.router.navigateByUrl('/menu/home')
         : this.checkingUser = false;
     });
   }
@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
       this.showLoading = true;
       await this.usuario.login(this.email, this.senha);
       this.showLoading = false;
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('/menu/home');
     } catch (erro) {
       this.showLoading = false;
     }

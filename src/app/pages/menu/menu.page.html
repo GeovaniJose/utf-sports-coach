@@ -1,9 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>menu</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-menu side="start" menuId="menu" type="overlay" contentId="menuContent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="true">
+        <ion-item [routerLink]="['/menu/home']">
+          <ion-icon slot="start" name="home"></ion-icon>
+          <ion-label>Home</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
 
-</ion-content>
+    <ion-item (click)="this.usuario.logout()">
+      <ion-icon slot="start" name="exit"></ion-icon>
+      <ion-label>Logout</ion-label>
+    </ion-item>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet main id="menuContent"></ion-router-outlet>
