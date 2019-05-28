@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
 
 import { FirebaseService } from './firebase.service';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class UsuarioService {
   constructor(
     public firebase: FirebaseService,
     public router: Router,
-    public toastCtrl: ToastController
+    public toast: ToastService
   ) {
     this.getUser().subscribe();
   }
@@ -74,11 +74,11 @@ export class UsuarioService {
       await this.firebase.auth().signInWithEmailAndPassword(email, senha);
     } catch (error) {
       if (error.code === 'auth/invalid-email') {
-        await this.presentToast('Email incorreto!');
+        await this.toast.presentToast('Email incorreto!');
       } else if (error.code === 'auth/wrong-password') {
-        await this.presentToast('Senha incorreta!');
+        await this.toast.presentToast('Senha incorreta!');
       } else if (error.code === 'auth/user-not-found') {
-        await this.presentToast('O email digitado não está cadastrado!');
+        await this.toast.presentToast('O email digitado não está cadastrado!');
       }
       throw new Error(error.message);
     }
@@ -89,11 +89,11 @@ export class UsuarioService {
       await this.firebase.auth().createUserWithEmailAndPassword(email, senha);
     } catch (error) {
       if (error.code === 'auth/invalid-email') {
-        await this.presentToast('Por favor, digite um email válido!');
+        await this.toast.presentToast('Por favor, digite um email válido!');
       } else if (error.code === 'auth/weak-password') {
-        await this.presentToast('Por favor, digite uma senha com pelo menos 6 caracteres!');
+        await this.toast.presentToast('Por favor, digite uma senha com pelo menos 6 caracteres!');
       } else if (error.code === 'auth/email-already-in-use') {
-        await this.presentToast('O email digitado já está em uso!');
+        await this.toast.presentToast('O email digitado já está em uso!');
       }
       throw new Error(error.message);
     }
@@ -102,16 +102,6 @@ export class UsuarioService {
   logout() {
     this.firebase.auth().signOut();
     this.router.navigateByUrl('login');
-  }
-
-  async presentToast(msg) {
-    const toast = await this.toastCtrl.create({
-      message: msg,
-      duration: 2000,
-      position: 'bottom',
-      animated: true
-    });
-    toast.present();
   }
 
 }
