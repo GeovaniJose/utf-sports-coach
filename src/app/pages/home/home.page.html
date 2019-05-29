@@ -20,7 +20,7 @@
     <ion-item
       *ngFor="let sport of sports"
       [routerLink]="['/menu/sport']"
-      [queryParams]="{ resource: sport.id }"
+      [queryParams]="sport"
     >
       <ion-label>{{ sport.title }}</ion-label>
     </ion-item>

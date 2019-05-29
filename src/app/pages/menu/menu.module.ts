@@ -16,6 +16,10 @@ const routes: Routes = [
     {
       path: 'sport',
       loadChildren: '../sport/sport.module#SportPageModule'
+    },
+    {
+      path: 'players',
+      loadChildren: '../players/players.module#PlayersPageModule'
     }],
   },
 ];
