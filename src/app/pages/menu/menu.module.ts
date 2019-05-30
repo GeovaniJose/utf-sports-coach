@@ -23,6 +23,9 @@ const routes: Routes = [
     }, {
       path: 'historic',
       loadChildren: '../historic/historic.module#HistoricPageModule'
+    }, {
+      path: 'profile',
+      loadChildren: '../profile/profile.module#ProfilePageModule'
     }],
   },
 ];
