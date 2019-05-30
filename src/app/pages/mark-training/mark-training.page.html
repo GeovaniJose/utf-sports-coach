@@ -1,9 +1,33 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>mark-training</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Marcar Treino</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
-</ion-content>
+<ion-content padding>
+    <ion-item>
+      <ion-label>Tipo</ion-label>
+      <ion-input slot="end" type="text" minlength="3" placeholder="Ex: Físico" [(ngModel)]="treino.tipo"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime display-format="DDDD, D MMM" picker-format="DD MM YYYY" [(ngModel)]="treino.data"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora Início</ion-label>
+      <ion-datetime display-format="HH:mm" [(ngModel)]="treino.horaIni"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Hora Fim</ion-label>
+      <ion-datetime display-format="HH:mm" [(ngModel)]="treino.horaFim"></ion-datetime>
+    </ion-item>
+    <ion-button (click)="save()" expand="block">
+      Salvar
+    </ion-button>
+  </ion-content>
+  

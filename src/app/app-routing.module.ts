@@ -5,7 +5,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
-  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },  { path: 'mark-training', loadChildren: './pages/mark-training/mark-training.module#MarkTrainingPageModule' }
+  { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
 
 ];
 
