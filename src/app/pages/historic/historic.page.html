@@ -1,9 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>historic</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{sport.title}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>HISTÓRICO DE TREINOS</ion-label>
+    </ion-list-header>
 
+    <ion-item *ngIf="treinos.length === 0 && !showLoading" lines="none">
+      <h1>Não há treinos no histórico!</h1>
+    </ion-item>
+
+    <ion-item *ngFor="let treino of treinos">
+      <ion-item lines="none">
+        <ion-label>
+          <h2>
+            {{treino.data}}
+          </h2>
+          <h3>
+            {{treino.horaIni}} até {{treino.horaFim}}
+          </h3>
+          <p>
+            {{ treino.tipo }}
+          </p>
+        </ion-label>
+      </ion-item>
+      <ion-item slot="end" lines="none">
+        <ion-icon name="checkmark-circle"></ion-icon>
+      </ion-item>
+    </ion-item>
+
+    <ion-spinner *ngIf="showLoading">
+    </ion-spinner>
+  </ion-list>
 </ion-content>

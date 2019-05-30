@@ -20,6 +20,9 @@ const routes: Routes = [
     {
       path: 'players',
       loadChildren: '../players/players.module#PlayersPageModule'
+    }, {
+      path: 'historic',
+      loadChildren: '../historic/historic.module#HistoricPageModule'
     }],
   },
 ];
