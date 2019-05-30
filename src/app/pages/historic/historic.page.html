@@ -14,7 +14,7 @@
     </ion-list-header>
 
     <ion-item *ngIf="treinos.length === 0 && !showLoading" lines="none">
-      <h1>Não há treinos no histórico!</h1>
+      <h1 class="centraliza">Não há treinos no histórico!</h1>
     </ion-item>
 
     <ion-item *ngFor="let treino of treinos">
@@ -36,7 +36,7 @@
       </ion-item>
     </ion-item>
 
-    <ion-spinner *ngIf="showLoading">
+    <ion-spinner *ngIf="showLoading" class="centraliza">
     </ion-spinner>
   </ion-list>
 </ion-content>
