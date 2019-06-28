@@ -21,7 +21,7 @@ export class UsuarioService {
   }
 
   getUser(): Observable<any> {
-    return Observable.create(observer => {
+    return new Observable(observer => {
       this.firebase.auth().onAuthStateChanged(user => {
         if (user) {
           this.usuario = {
@@ -41,7 +41,7 @@ export class UsuarioService {
   }
 
   getUserData(): Observable<any> {
-    return Observable.create(observer => {
+    return new Observable(observer => {
       this.firebase.auth().onAuthStateChanged(async user => {
         if (user) {
           await this.firebase.db().collection('users').doc(user.uid)
@@ -52,6 +52,7 @@ export class UsuarioService {
                 nome: result.data().nome,
                 telefone: result.data().telefone,
                 atletica: result.data().atletica,
+                tipo: result.data().tipo,
                 isOnline: true
               };
 
