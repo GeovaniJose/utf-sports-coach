@@ -28,10 +28,10 @@
         <p>Posição: {{ player.posicao }}</p>
         <p>Presença: {{ player.presenca }}</p>
       </ion-label>
+      <ion-icon slot="end" name="logo-whatsapp" (click)="sendWhats(player.telefone)" color="success"></ion-icon>
     </ion-item>
 
     <ion-spinner *ngIf="showLoading" class="centraliza">
     </ion-spinner>
   </ion-list>
 </ion-content>
-

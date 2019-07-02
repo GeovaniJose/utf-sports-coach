@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Camera } from '@ionic-native/camera/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,6 +16,7 @@ import { AppRoutingModule } from './app-routing.module';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [
+    SocialSharing,
     Camera,
     StatusBar,
     SplashScreen,
