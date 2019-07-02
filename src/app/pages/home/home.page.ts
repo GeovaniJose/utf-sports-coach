@@ -45,6 +45,9 @@ export class HomePage implements OnInit {
       ],
       buttons: [
         {
+          text: 'Cancelar'
+        },
+        {
           text: 'Salvar',
           handler: async (input) => {
             if (input.esporte.length >= 5) {
@@ -65,9 +68,6 @@ export class HomePage implements OnInit {
               this.toast.presentToast('Insira um esporte com no mínimo 5 letras!');
             }
           }
-        },
-        {
-          text: 'Cancelar'
         }
       ]
     });

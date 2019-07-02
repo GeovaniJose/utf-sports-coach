@@ -1,5 +1,7 @@
 {
   "name": "utf-sports-coach",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

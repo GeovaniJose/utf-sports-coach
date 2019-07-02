@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 import { FirebaseService } from './firebase.service';
 import { ToastService } from './toast.service';
@@ -14,7 +14,7 @@ export class UsuarioService {
 
   constructor(
     public firebase: FirebaseService,
-    public router: Router,
+    public navCtrl: NavController,
     public toast: ToastService
   ) {
     this.getUser().subscribe();
@@ -52,6 +52,7 @@ export class UsuarioService {
                 nome: result.data().nome,
                 telefone: result.data().telefone,
                 atletica: result.data().atletica,
+                photoURL: result.data().photoURL,
                 tipo: result.data().tipo,
                 isOnline: true
               };
@@ -102,7 +103,7 @@ export class UsuarioService {
 
   logout() {
     this.firebase.auth().signOut();
-    this.router.navigateByUrl('login');
+    this.navCtrl.navigateRoot('/login');
   }
 
 }
