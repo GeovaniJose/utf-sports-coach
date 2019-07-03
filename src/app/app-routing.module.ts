@@ -7,7 +7,8 @@ const routes: Routes = [
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
   { path: 'menu', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'mark-training', loadChildren: './pages/mark-training/mark-training.module#MarkTrainingPageModule'},
-  { path: 'presenca', loadChildren: './pages/presenca/presenca.module#PresencaPageModule'}
+  { path: 'presenca', loadChildren: './pages/presenca/presenca.module#PresencaPageModule'},  { path: 'notifications', loadChildren: './pages/notifications/notifications.module#NotificationsPageModule' }
+
 ];
 
 @NgModule({
