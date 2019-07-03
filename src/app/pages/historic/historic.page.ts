@@ -1,9 +1,8 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController, AlertController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 import { FirebaseService } from './../../services/firebase.service';
-import { MarkTrainingPage } from './../mark-training/mark-training.page';
 import { ToastService } from './../../services/toast.service';
 
 @Component({
@@ -21,7 +20,6 @@ export class HistoricPage implements OnInit {
     public firebase: FirebaseService,
     public route: ActivatedRoute,
     public modal: ModalController,
-    public alert: AlertController,
     public toast: ToastService
   ) {
     this.route.queryParams.subscribe(params => {

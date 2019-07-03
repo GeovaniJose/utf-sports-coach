@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { NotificationsPage } from './notifications.page';
+import { WriteNotificationPage } from './../write-notification/write-notification.page';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [NotificationsPage]
+  declarations: [NotificationsPage, WriteNotificationPage],
+  entryComponents: [WriteNotificationPage]
 })
 export class NotificationsPageModule {}

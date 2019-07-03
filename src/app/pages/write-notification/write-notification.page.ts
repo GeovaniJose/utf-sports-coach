@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+
+import { ToastService } from './../../services/toast.service';
 
 @Component({
   selector: 'app-write-notification',
@@ -7,9 +10,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WriteNotificationPage implements OnInit {
 
-  constructor() { }
+  public notificacao = {
+    assunto: '',
+    mensagem: ''
+  };
+
+  constructor(public modal: ModalController, public toast: ToastService) { }
 
   ngOnInit() {
+  }
+
+  save() {
+    if (this.notificacao.assunto.length >= 4 && this.notificacao.mensagem.length >= 10) {
+      this.modal.dismiss({
+        notification: this.notificacao
+      }).then(() =>
+        this.toast.presentToast('Notificação escrita com sucesso!')
+      );
+    } else {
+      this.toast.presentToast('Preencha todos os campos corretamente!');
+    }
+  }
+
+  close() {
+    this.modal.dismiss();
   }
 
 }

@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>write-notification</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Escrever Notificação</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
+  <div class="direction-column">
+    <ion-item lines="none">
+      <ion-label><h2>Assunto</h2></ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-input type="text" minlength="4" placeholder="Adicionar assunto..." [(ngModel)]="notificacao.assunto"></ion-input>
+    </ion-item>
+  </div>
+  <div class="direction-column">
+    <ion-item lines="none">
+      <ion-label><h2>Mensagem</h2></ion-label>
+    </ion-item>
+    <ion-item class="text-area">
+      <ion-textarea
+        minlength="10"
+        placeholder="Escreva a mensagem aqui.."
+        [(ngModel)]="notificacao.mensagem"
+        cols="50" rows="5"
+      >
+      </ion-textarea>
+    </ion-item>
+  </div>
+  <ion-button (click)="save()" expand="block" shape="round">
+    Salvar
+  </ion-button>
 </ion-content>
