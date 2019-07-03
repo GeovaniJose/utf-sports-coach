@@ -18,7 +18,7 @@
     </ion-item>
 
     <ion-item *ngFor="let treino of treinos">
-      <ion-item lines="none">
+      <ion-item lines="none" (click)="makePresence(treino)">
         <ion-label>
           <h2>
             {{treino.data}}

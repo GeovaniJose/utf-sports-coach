@@ -10,13 +10,14 @@ import { ToastService } from './../../services/toast.service';
 })
 export class MarkTrainingPage implements OnInit {
 
-  @Input() sportId: string;
+  @Input() public sportId: string;
   public treino = {
     data: '',
     tipo: '',
     horaIni: '',
     horaFim: '',
-    check: false
+    check: false,
+    presented: false
   };
 
   constructor(public modal: ModalController, public toast: ToastService) {}

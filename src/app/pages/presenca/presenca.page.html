@@ -1,9 +1,40 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>presenca</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Presença</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>JOGADORES</ion-label>
+    </ion-list-header>
 
+    <ion-item *ngIf="players.length === 0 && !showLoading" lines="none">
+      <h1 class="centraliza">Esporte ainda não possui jogadores cadastrados!</h1>
+    </ion-item>
+
+    <ion-item
+      *ngFor="let player of players; let pos = index"
+      (click)="marked(player, pos)"
+    >
+      <ion-avatar slot="start">
+        <img [src]="player.photoURL"/>
+      </ion-avatar>
+      <ion-label>{{ player.nome }}</ion-label>
+      <ion-icon slot="end" [color]="player.corIcon" name="checkmark-circle"></ion-icon>
+    </ion-item>
+
+    <ion-spinner *ngIf="showLoading" class="centraliza">
+    </ion-spinner>
+  </ion-list>
+
+  <ion-button (click)="save()" expand="block">
+    Salvar
+  </ion-button>
 </ion-content>

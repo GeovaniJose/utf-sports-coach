@@ -3,8 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Events, ModalController, AlertController } from '@ionic/angular';
 
 import { FirebaseService } from './../../services/firebase.service';
-import { MarkTrainingPage } from './../mark-training/mark-training.page';
 import { ToastService } from './../../services/toast.service';
+import { MarkTrainingPage } from '../mark-training/mark-training.page';
+import { PresencaPage } from '../presenca/presenca.page';
 
 @Component({
   selector: 'app-sport',
@@ -123,6 +124,33 @@ export class SportPage implements OnInit, OnDestroy {
     });
 
     await checkAlert.present();
+  }
+
+  async makePresence(treino) {
+    if (!treino.presented) {
+      const page = await this.modal.create({
+        component: PresencaPage,
+        componentProps: { sportId: this.sport.id },
+      });
+
+      await page.present();
+
+      const { data } = await page.onDidDismiss();
+
+      if (data) {
+        await this.firebase.db().collection('sports')
+          .doc(this.sport.id)
+          .collection('trainings')
+          .doc(treino.id)
+          .set({
+            presented: data.truePresented
+          }, {merge: true});
+
+        this.chargeTrainings();
+      }
+    } else {
+      this.toast.presentToast('Presença já foi realizada nesse treino!');
+    }
   }
 
 }
