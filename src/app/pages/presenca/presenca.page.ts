@@ -51,7 +51,7 @@ export class PresencaPage implements OnInit {
 
   async marked(player, pos) {
     if (!player.checked) {
-      this.players[pos].corIcon = 'primary';
+      this.players[pos].corIcon = 'tertiary';
       this.players[pos].checked = true;
       this.players[pos].presenca += 1;
     } else {

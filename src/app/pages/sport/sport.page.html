@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
@@ -10,7 +10,7 @@
 <ion-content padding>
   <ion-list>
     <ion-list-header>
-      <ion-label>TREINOS</ion-label>
+      <ion-label color="primary">TREINOS</ion-label>
     </ion-list-header>
 
     <ion-item *ngIf="treinos.length === 0 && !showLoading" lines="none">
@@ -32,7 +32,7 @@
         </ion-label>
       </ion-item>
       <ion-item slot="end" lines="none" (click)="trainingCheck(treino)">
-        <ion-icon name="done-all"></ion-icon>
+        <ion-icon name="done-all" color="tertiary"></ion-icon>
       </ion-item>
     </ion-item>
 
@@ -40,7 +40,7 @@
     </ion-spinner>
   </ion-list>
 
-  <ion-button expand="block" shape="round" (click)="markTrainig()">
+  <ion-button expand="block" shape="round" fill="outline" (click)="markTrainig()">
     Marcar Treino
   </ion-button>
 </ion-content>

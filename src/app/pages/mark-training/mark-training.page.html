@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-buttons slot="end">
       <ion-button (click)="close()">
         <ion-icon name="close"></ion-icon>
@@ -26,7 +26,8 @@
     <ion-label>Hora Fim</ion-label>
     <ion-datetime display-format="HH:mm" [(ngModel)]="treino.horaFim"></ion-datetime>
   </ion-item>
-  <ion-button (click)="save()" expand="block">
+
+  <ion-button (click)="save()" expand="block" shape="round" fill="outline">
     Salvar
   </ion-button>
 </ion-content>
